@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:location/location.dart';
 
 class ListenLocationWidget extends StatefulWidget {
@@ -31,6 +32,24 @@ class _ListenLocationState extends State<ListenLocationWidget> {
         _locationSubscription = null;
       });
     }).listen((LocationData currentLocation) {
+          Fluttertoast.showToast(
+              msg: 'latitude:${currentLocation.latitude} , latitude:${currentLocation.latitude}',
+              backgroundColor: Colors.white,
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER);
+          // final snackBar = SnackBar(
+          //   content: Text('latitude:${currentLocation.latitude} , latitude:${currentLocation.latitude}'),
+          //   action: SnackBarAction(
+          //     label: 'Undo',
+          //     onPressed: () {
+          //       // Some code to undo the change.
+          //     },
+          //   ),
+          // );
+          //
+          // // Find the ScaffoldMessenger in the widget tree
+          // // and use it to show a SnackBar.
+          // ScaffoldMessenger.of(context).showSnackBar(snackBar);
       setState(() {
         _error = null;
 
@@ -58,6 +77,7 @@ class _ListenLocationState extends State<ListenLocationWidget> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Listen location: ' + (_error ?? '${_location ?? "unknown"}'));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

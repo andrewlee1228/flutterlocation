@@ -10,6 +10,7 @@ dependencies:
   location:
     path: ../
   url_launcher: ^6.0.2
+  fluttertoast: ^8.0.7
 
 dev_dependencies:
   flutter_driver:
